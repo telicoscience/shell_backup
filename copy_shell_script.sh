@@ -24,7 +24,9 @@ if [ ! -d "$dest_dir" ]; then
     exit 1
 fi
 
-# Encontra todos os arquivos .sh no diretório atual e os copia para a pasta script_shell
-find . -type f -name "*.sh" -exec cp {} "$dest_dir" \;
+
+# Encontra todos os arquivos .sh apenas no diretório atual (sem incluir subpastas)
+find . -maxdepth 1 -type f -name "*.sh" -exec cp {} "$dest_dir" \;
+
 
 echo "Cópia de arquivos .sh concluída!"
